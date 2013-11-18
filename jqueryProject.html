@@ -1,0 +1,121 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>Mathmagic!</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="themes/Mathmagic.min.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile.structure-1.3.2.min.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+                
+</head> 
+<body>
+
+    <script>
+
+        function getRandomArbitary (min, max) {
+        return Math.random() * (max - min) + min;
+        }
+        var x = getRandomArbitary(1,9);
+        var randomNumber = Math.floor(x);
+        randomNumber = 2*randomNumber
+        
+    </script>
+
+    <div data-role="page" id="one"> <!-- /page 1 -->
+
+	<div data-role="header">
+            
+	    <h1>Mathmagic!</h1>
+            <a href=#two class="ui-btn-right" data-icon="arrow-r" >next</a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+            
+            <p class = "bold">This app can read your mind!</p>
+            <p class = "center">Let's play a little game, shall we?</p>
+            <p class = "center"> Think of a number </p>
+        </div><!-- /content -->
+    </div><!-- /page 1 -->
+    
+    <div data-role="page" id="two"> <!-- /page 2 -->
+       
+        <div data-role="header">
+	    <h1>Mathmagic!</h1>
+            <a href=#three class="ui-btn-right" data-icon="arrow-r" >next</a>
+	</div><!-- /header -->
+        
+        <div data-role="content">
+            <p class = "center">Your dad gave you the same amount of the number you thought of</p>
+
+  
+        </div><!-- /content -->
+        
+    </div>
+    
+    <div data-role="page" id="three"> <!-- /page 3 -->
+        
+        <div data-role="header">
+	    <h1>Mathmagic!</h1>
+            <a href=#four class="ui-btn-right" data-icon="arrow-r" >next</a>
+	</div><!-- /header -->
+       
+        <div data-role="content">
+            <p class = "center">I will give you:</p> <!-- randomNumber -->
+
+            <script>
+            document.write(randomNumber)
+            </script>
+            
+        
+        </div><!-- /content -->
+    </div>
+    
+    <div data-role="page" id="four"> <!-- /page 4 -->
+       
+        <div data-role="header">
+	    <h1>Mathmagic!</h1>
+            <a href=#five class="ui-btn-right" data-icon="arrow-r" >next</a>
+	</div><!-- /header -->
+        
+        <div data-role="content">
+        <p class = "center"> through half of what you got</p>
+        
+        </div><!-- /content -->
+    
+    </div>
+    
+    <div data-role="page" id="five"> <!-- /page 5 -->
+        
+        <div data-role="header">
+	    <h1>Mathmagic!</h1>
+            <a href=#six class="ui-btn-right" data-icon="arrow-r" >next</a>
+	</div><!-- /header -->
+        
+        <div data-role="content">
+            <p class = "center">give your dad back what he game you</p>
+
+        </div><!-- /content -->
+        
+    </div>
+    
+    <div data-role="page" id="six"> <!-- /page 6 -->
+        
+        <div data-role="header">
+	    <h1>Mathmagic!</h1>
+
+	</div><!-- /header -->
+        
+        <div data-role="content">
+            <p class = "center"> you have </p>
+
+            <script>document.write(randomNumber/2)</script>
+     
+        <p><a href="#one" data-role="button"  class = "center" data-icon="refresh" onClick="reloadPage(true)">wanna play again?</a></p>
+        
+        </div><!-- /content -->
+        
+    </div>
+    
+</body>
+</html>
