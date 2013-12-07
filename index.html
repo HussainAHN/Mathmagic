@@ -1,121 +1,83 @@
-<!DOCTYPE html> 
-<html> 
-<head> 
-	<title>Mathmagic!</title> 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="themes/Mathmagic.min.css" />
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile.structure-1.3.2.min.css" />
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
-                
-</head> 
-<body>
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>car</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript"
+            src = "simpleGame.js"></script>
 
-    <script>
+    
+    <script type="text/javascript">
+        var scene;
+        var car;
+        var road;
+        var virtKeys = true;
 
-        function getRandomArbitary (min, max) {
-        return Math.random() * (max - min) + min;
+        function Car(){ // car sprite and behavior. it should stick to the buttom and only move left and right
+            raceCar = new Sprite(scene, "redball.png", 20, 20);
+            raceCar.setSpeed(0);
+            raceCar.setPosition(115, 100);
+            return raceCar;
+        } // end Car
+        
+        function init(){
+            scene = new Scene();
+            scene.setSize(629, 500)
+            road = new Sprite(scene, "road.png", 629, 1074);
+            road.setSpeed(50);
+            road.setMoveAngle(0);
+            road.setPosition(314, 537);
+            output = document.getElementById("output");
+            car = new Car();
+            var joy = Joy();
+
+            scene.start();
+        } // end init
+
+        function update(){
+            scene.clear();
+            road.update();
+            //checkKeys();
+            
+
+                    newDX = accel.getAY();
+                    newDY = accel.getAX();
+                    
+                    newDX *= -5;
+                    newDY *= -5;
+                    
+                    car.setDX(newDX);
+                    car.setDY(newDY);
+            car.update();
+        
+        } // end update
+        
+            
+    function checkKeys(){
+        car.setDX(0);
+        car.setDY(0);
+        
+        if (keysDown[K_UP]){
+            car.setDY(-5);
         }
-        var x = getRandomArbitary(1,9);
-        var randomNumber = Math.floor(x);
-        randomNumber = 2*randomNumber
-        
+        if (keysDown[K_DOWN]){
+            car.setDY(5);
+        }
+        if (keysDown[K_LEFT]){
+            car.setDX(-10);
+        }
+        if (keysDown[K_RIGHT]){
+            car.setDX(10);
+        }
+                            }
+
+            
+           
+            
     </script>
-
-    <div data-role="page" id="one"> <!-- /page 1 -->
-
-	<div data-role="header">
-            
-	    <h1>Mathmagic!</h1>
-            <a href=#two class="ui-btn-right" data-icon="arrow-r" data-transition="slide" >next</a>
-	</div><!-- /header -->
-
-	<div data-role="content">
-            
-            <h2 class = "bold">This app can read your mind!</h2>
-            <p class = "center">Let's play a little game, shall we?</p>
-            <p class = "center"> Think of a number .. </p>
-        </div><!-- /content -->
-    </div><!-- /page 1 -->
-    
-    <div data-role="page" id="two"> <!-- /page 2 -->
-       
-        <div data-role="header">
-	    <h1>Mathmagic!</h1>
-            <a href=#three class="ui-btn-right" data-icon="arrow-r" data-transition="slide" >next</a>
-	</div><!-- /header -->
-        
-        <div data-role="content">
-            <p class = "center">Your dad gave you the same amount of the number you thought of.</p>
-
+</head>
+<body onload = "init()">
   
-        </div><!-- /content -->
-        
-    </div>
-    
-    <div data-role="page" id="three"> <!-- /page 3 -->
-        
-        <div data-role="header">
-	    <h1>Mathmagic!</h1>
-            <a href=#four class="ui-btn-right" data-icon="arrow-r" data-transition="slide" >next</a>
-	</div><!-- /header -->
-       
-        <div data-role="content">
-            <p class = "center">I will give you:</p> <!-- randomNumber -->
-
-            <script>
-            document.write(randomNumber)
-            </script>
-            
-        
-        </div><!-- /content -->
-    </div>
-    
-    <div data-role="page" id="four"> <!-- /page 4 -->
-       
-        <div data-role="header">
-	    <h1>Mathmagic!</h1>
-            <a href=#five class="ui-btn-right" data-icon="arrow-r" data-transition="slide" >next</a>
-	</div><!-- /header -->
-        
-        <div data-role="content">
-        <p class = "center"> throw half of what you got.</p>
-        
-        </div><!-- /content -->
-    
-    </div>
-    
-    <div data-role="page" id="five"> <!-- /page 5 -->
-        
-        <div data-role="header">
-	    <h1>Mathmagic!</h1>
-            <a href=#six class="ui-btn-right" data-icon="arrow-r" data-transition="slide" >next</a>
-	</div><!-- /header -->
-        
-        <div data-role="content">
-            <p class = "center">give your dad back what he game you.</p>
-
-        </div><!-- /content -->
-        
-    </div>
-    
-    <div data-role="page" id="six"> <!-- /page 6 -->
-        
-        <div data-role="header">
-	    <h1>Mathmagic!</h1>
-
-	</div><!-- /header -->
-        
-        <div data-role="content">
-            <p class = "center"> you have </p>
-
-            <script>document.write(randomNumber/2)</script>
-     
-        <p><a href="#one" data-role="button"  class = "center" data-icon="refresh" onClick="history.go(0)" data-transition="pop">wanna play again?</a></p>
-        
-        </div><!-- /content -->
-        
-    </div>
-    
 </body>
 </html>
